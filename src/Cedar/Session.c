@@ -2343,7 +2343,7 @@ SESSION *NewServerSessionEx(CEDAR *cedar, CONNECTION *c, HUB *h, char *username,
 
 			GetMachineName(machine, sizeof(machine));
 
-			Format(tmp, sizeof(tmp), "%s@%s@%u", machine, h->Name, s->UniqueId);
+			Format(tmp, sizeof(tmp), "%s@%s@%s", username, machine, h->Name);
 
 			StrUpper(tmp);
 			Trim(tmp);
@@ -2351,11 +2351,11 @@ SESSION *NewServerSessionEx(CEDAR *cedar, CONNECTION *c, HUB *h, char *username,
 			Hash(hash, tmp, StrLen(tmp), true);
 
 			s->IpcMacAddress[0] = 0xCA;
-			s->IpcMacAddress[1] = hash[1];
-			s->IpcMacAddress[2] = hash[2];
-			s->IpcMacAddress[3] = hash[3];
-			s->IpcMacAddress[4] = hash[4];
-			s->IpcMacAddress[5] = hash[5];
+			s->IpcMacAddress[1] = hash[0];
+			s->IpcMacAddress[2] = hash[1];
+			s->IpcMacAddress[3] = hash[2];
+			s->IpcMacAddress[4] = hash[3];
+			s->IpcMacAddress[5] = hash[4];
 
 			MacToStr(tmp, sizeof(tmp), s->IpcMacAddress);
 			Debug("MAC Address for IPC: %s\n", tmp);
