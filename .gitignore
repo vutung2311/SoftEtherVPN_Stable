@@ -1,0 +1,10 @@
+output/*
+src/bin/*
+src/BuildUtil/obj/*
+src/*/Win32_Release/*
+src/*/x64_Release/*
+src/DebugFiles/*
+src/tmp/*
+CurrentBuild.txt
+*.sln.cache
+src/Cedar/Cedar.h
